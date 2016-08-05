@@ -173,7 +173,7 @@ public class ButtonImage extends Button
     private void loadTextInfo(PaneParams params)
     {
         textScale = params.getFloatAttribute("scale", textScale);
-        textAlignment = params.getEnumAttribute("textalign", textAlignment);
+        textAlignment = params.getEnumAttribute("textalign", Alignment.class, textAlignment);
         textColor = params.getColorAttribute("textcolor", textColor);
         // match textColor by default
         textHoverColor = params.getColorAttribute("texthovercolor", textColor);

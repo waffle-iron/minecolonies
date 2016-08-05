@@ -120,17 +120,16 @@ public class PaneParams
         return def;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends Enum<T>> T getEnumAttribute(String name, T def)
+    public <T extends Enum<T>> T getEnumAttribute(String name, Class<T> clazz, T def)
     {
         String attr = getStringAttribute(name, null);
         if (attr != null)
         {
-            try { return T.valueOf((Class<T>)(Object)def.getClass(), attr); }
-            catch (IllegalArgumentException exc) {}
+            return Enum.valueOf(clazz, attr);
         }
         return def;
     }
+
 
     static Pattern percentagePattern = Pattern.compile("([-+]?\\d+)(%|px)?", Pattern.CASE_INSENSITIVE);
     private int parseScalableIntegerRegexMatch(Matcher m, int def, int scale)
@@ -178,6 +177,16 @@ public class PaneParams
 
         public int x;
         public int y;
+
+        public int getX()
+        {
+            return x;
+        }
+
+        public int getY()
+        {
+            return y;
+        }
     }
 
     public SizePair getSizePairAttribute(String name, SizePair def, SizePair scale)
