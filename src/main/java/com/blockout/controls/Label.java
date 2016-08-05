@@ -34,8 +34,8 @@ public class Label extends Pane
         }
     }
 
-    public String getLabel() { return label; }
-    public void setLabel(String s) { label = s; }
+    public String getText() { return label; }
+    public void setText(String s) { label = s; }
 
     public int getColor() { return textColor; }
     public int getHoverColor() { return hoverColor; }
